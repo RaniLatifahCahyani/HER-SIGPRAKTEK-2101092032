@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Padang</title>
+    <link rel="stylesheet" type="text/css" href="leaflet.css"/>
+    <script type="text/javascript" src="leaflet.js"></script>
+</head>
+<body>
+    <div id="mapku" style="width: 100%; height: 600px"></div>
+</body>
+<script type="text/javascript">
+    
+    var myMap = L.map('mapku').setView([-0.789027948858984, 100.28321933564051],16);
+
+    var title = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        maxZoom: 19,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(myMap);
+
+   //  var LeafIcon = L.Icon.extend({
+     //  options: {
+       //    iconSize: [110,110]
+     //  }
+  // })
+
+   // var markericon = new LeafIcon({iconUrl: 'images/markerr.png'});
+
+    
+
+    var myLocation = [
+        [-0.7890458437874339, 100.28353846208347,'Bandara Internasional Minangkabau'],
+        [-0.7842990190128126, 100.29017029607675, 'Mesjid Raya Nurul Falah'],
+        [-0.7860154716486472, 100.31149922074215, 'Penginapan Three Joye'],
+        [-0.791722671325622, 100.31518994001546, 'FlayOver'],
+        [-0.7972582184314614, 100.32527504605012, 'PT Kunango Jantan'],
+    ];
+
+    for (var i = 0; i<myLocation.length; i++){
+       markerMaps = new L.marker([myLocation[i][0], myLocation[i][1]]).addTo(myMap).bindTooltip(myLocation[i][2]).bindPopup(myLocation[i][3]);
+    }
+    
+    var Jlnmenujubandara = [
+        [-0.785075906800725, 100.28758906789233], 
+        [-0.7840562380996411, 100.29035348929027],
+        [-0.7835034055672203, 100.29456769597904],
+        [-0.783773679245871, 100.29639835736751],
+        [-0.7854936022621297, 100.30214835306568], 
+        [-0.7869923917620528, 100.30746832832776],
+        [-0.7881594816077316, 100.31114193729138],
+        [-0.7909236404145195, 100.31265315424072],
+        [-0.7920293034095703, 100.31348862398227],
+        [-0.7931472512422965, 100.31957035038339],
+        [-0.7941054920411086, 100.32072526425877],
+        [-0.7955551379248378, 100.32149930230443],
+        [-0.7986018495613996, 100.32184331914105],
+        [-0.8023365253491005, 100.3227647928647],
+    ];
+
+    L.polyline(Jlnmenujubandara).addTo(myMap);
+
+
+    var circle = L.circle([-0.7890458437874339, 100.28353846208347],{
+        color: 'Indian Red',
+        fillColor: '#CD5C5C',
+        fillOpacity: 0.5,
+        radius: 300
+    }).addTo(myMap).bindTooltip('Padang');
+
+   
+
+    var info_bandara = '<p style="text-align: center;"><img src = "images/bandara.jpg" width="100%" height="100%"</p> <p>Satu satunya bandara di Sumbar</p>';
+    L.marker([-0.7890458437874339, 100.28353846208347]).bindTooltip("Bandara Internasional Minangkabau").bindPopup(info_bandara).addTo(myMap);
+
+    var info_masjid = '<p style="text-align: center;"><img src = "images/masjid.jpg" width="100%" height="100%"</p> <p>Masjid yang berada di dekat bandara</p>';
+    L.marker([-0.7842990190128126, 100.29017029607675]).bindTooltip("Mesjid Raya Nurul Falah").bindPopup(info_masjid).addTo(myMap);
+
+    var info_penginapan = '<p style="text-align: center;"><img src = "images/penginapan.jpg" width="100%" height="100%"</p> <p>Salah satu penginapan yang berada di dekat bandara</p>';
+    L.marker([-0.7860154716486472, 100.31149922074215]).bindTooltip("Penginapan Three Joye").bindPopup(info_penginapan).addTo(myMap);
+
+    var info_flayover= '<p style="text-align: center;"><img src = "images/flayover.jpg" width="100%" height="100%"</p> <p> jembatan layang bandara tembus by pass </p>';
+    L.marker([-0.791722671325622, 100.31518994001546]).bindTooltip("FlayOver").bindPopup(info_flayover).addTo(myMap);
+
+    var info_kunango= '<p style="text-align: center;"><img src = "images/kunango.jpg" width="100%" height="100%"</p> <p>PT yang berada di jalan menuju bandara</p>';
+    L.marker([-0.7972582184314614, 100.32527504605012]).bindTooltip("PT Kunango Jantan").bindPopup(info_kunango).addTo(myMap);
+
+
+    myMap.on('click',onMapClick);
+
+   [-0.7890458437874339, 100.28353846208347,'Bandara Internasional Minangkabau'],
+        [-0.7842990190128126, 100.29017029607675, 'Mesjid Raya Nurul Falah'],
+        [-0.7860154716486472, 100.31149922074215, 'Penginapan Three Joye'],
+        [-0.791722671325622, 100.31518994001546, 'FlayOver'],
+        [-0.7972582184314614, 100.32527504605012, 'PT Kunango Jantan']
+
+</script>
+</html>
